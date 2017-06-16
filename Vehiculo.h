@@ -16,7 +16,7 @@ class Vehiculo {
 
 	public:
 		Vehiculo();
-		Vehiculo(string, string, string, double);
+		Vehiculo(string, string, string, string, double);
 
 		string getPlaca();
 		void setPlaca(string);

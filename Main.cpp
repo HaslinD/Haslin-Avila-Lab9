@@ -10,6 +10,7 @@
 
 int menu();
 int menu2();
+int menu3();
 string RandomPlaca();
 
 int main(){
@@ -84,7 +85,39 @@ int main(){
 	            	{
 	            		if (dynamic_cast<Administrador*>(usuario.at(i)))
 	            		{
-	            			
+	            			bool salir3 = false;
+							while (!salir3){
+						        switch(menu3()){
+						           	case 1:{
+						           		string placa, marca, modelo, anio;
+						           		double precio;
+							        	cout << "Crear Vehiculo" << endl;
+							        	placa = RandomPlaca();
+							        	cout << "Ingrese la Marca del Vehiculo" << endl;
+							        	cin >> marca;
+							        	cout << "Ingrese el Modelo del Vehiculo" << endl;
+							        	cin >> modelo;
+							        	cout << "Ingrese el año del Vehiculo" << endl;
+							        	cin >> anio;
+							        	cout << "Ingrese la renta del Vehiculo" << endl;
+							        	cin >> precio;
+
+							        	carro.push_back(new Vehiculo(placa, marca, modelo, anio, precio));
+						               	break;}
+
+							       	case 2:{
+							                
+							           	break;}
+
+						           	case 3:{
+
+						           		break;}
+
+							       	case 4:
+							           	salir3 = true;
+							           	break;
+							    }
+							}
 	            		}
 	            	}
 	            }
@@ -134,6 +167,30 @@ int menu2(){
         cin >> opcion;
 
         if (opcion > 0 && opcion < 4)
+            valido = true;
+        else {
+            cout << "La opcion seleccionada es Nula, intente de nuevo ......." << endl;
+        }
+        cout << "----------------------" << endl;
+                
+    }while(!valido);
+    return opcion;
+}
+
+int menu3(){
+    int opcion;
+    bool valido = true;
+    do{
+        cout << "------SUB-MENU------" << endl
+             << "1.- Agregar" << endl
+             << "2.- Modificar"<< endl
+             << "3.- Eliminar" << endl
+             << "4.- Salir" << endl; 
+
+        cout << " Ingrese una opción: ";
+        cin >> opcion;
+
+        if (opcion > 0 && opcion < 5)
             valido = true;
         else {
             cout << "La opcion seleccionada es Nula, intente de nuevo ......." << endl;

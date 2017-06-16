@@ -9,6 +9,7 @@ Vehiculo :: Vehiculo() {
 }
 
 Vehiculo :: Vehiculo(string placa, string marca, string modelo, string anio, double precio) {
+	this -> placa = placa;
 	this -> marca = marca;
 	this -> modelo = modelo;
 	this -> anio = anio;
@@ -20,11 +21,7 @@ string Vehiculo :: getPlaca(){
 }
 
 void Vehiculo :: setPlaca(string placa){
-	this -> placa = placaa;
-}
-
-string Vehiculo :: getMarca(){
-	return marca;
+	this -> placa = placa;
 }
 
 string Vehiculo :: getMarca(){
