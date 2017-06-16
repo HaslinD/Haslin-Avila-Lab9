@@ -12,7 +12,12 @@
 int menu();
 int menu2();
 int menu3();
+int menu4();
 string RandomPlaca();
+
+vector<Administrador*> CargarAdmin();
+vector<Cliente*> CargarClien();
+vector<Vehiculo*> CargarCarr();
 
 int main(){
 	string user, password;
@@ -45,7 +50,7 @@ int main(){
 				        	cin >> numSeguro;
 
 				        	admin.push_back(new Administrador(cargo, numSeguro, user, password));
-				        	textAdm << "User: " << user << "Password: " << password << "Cargo: " << cargo << "#Seguro" << numSeguro << endl; 
+				        	textAdm << user << password << cargo << numSeguro << endl; 
 				        	cout << "Se ha Guardado " << endl;
 			               	break;}
 
@@ -70,8 +75,8 @@ int main(){
 				        		membre = "Platinum";
 				        	}
 
-				        	clien.push_back(new Cliente(user, password, membre));
-				        	textCli << "User: " << user << "Password: " << password << "Tipo de Membresia: " << membre << endl;
+				        	clien.push_back(new Cliente(membre, user, password));
+				        	textCli << user << password << membre << endl;
 				        	cout << "Se ha Guardado " << endl;
 				           	break;}
 
@@ -114,24 +119,56 @@ int main(){
 							        	cin >> precio;
 
 							        	carro.push_back(new Vehiculo(placa, marca, modelo, anio, precio));
-							        	textCar << "Placa: " << placa << "Marca: " << marca << "Modelo: " << modelo << "Año: " << anio << "Precio Renta: " << precio << endl;
+							        	textCar << placa << marca << modelo << anio << precio << endl;
 							        	cout << "Se ha Guardado" << endl;
 						               	break;}
 
 							       	case 2:{
+							       		int num;
+							       		string placa1, marca1, modelo1, anio1; 
+							       		double precio1;
 							            cout << "Modificar Vehiculo" << endl;
-
+							            for(int i = 0; i < carro.size(); i++){
+							            	cout << "<---[" << i << "]--->" << endl;
+											cout << "Placa: " << carro[i] -> getPlaca() << endl;
+											cout << "Marca: " << carro[i] -> getMarca() << endl;
+											cout << "Modelo: " << carro[i] -> getModelo() << endl;
+											cout << "Año: " << carro[i] -> getAnio() << endl;
+											cout << "Precio Renta: " << carro[i] -> getPrecio() << endl;
+											cout << "<------------------->" << endl;
+										}
+										while (num > 0 || num < carro.size()) {
+											cout << "Ingrese el Vehiculo que desea Modificar" << endl;
+											cin >> num;
+										}
+										cout << "Crear Vehiculo" << endl;
+							        	placa1 = RandomPlaca();
+							        	cout << "Ingrese la Marca del Vehiculo" << endl;
+							        	cin >> marca1;
+							        	cout << "Ingrese el Modelo del Vehiculo" << endl;
+							        	cin >> modelo1;
+							        	cout << "Ingrese el año del Vehiculo" << endl;
+							        	cin >> anio1;
+							        	cout << "Ingrese la renta del Vehiculo" << endl;
+							        	cin >> precio1;
+										carro.at(num) -> setPlaca(placa1);
+										carro.at(num) -> setMarca(marca1);
+										carro.at(num) -> setModelo(modelo1);
+										carro.at(num) -> setAnio(anio1);
+										carro.at(num) -> setPrecio(precio1);
 							           	break;}
 
 						           	case 3:{
 						           		int numbers =  0;
 								       	cout << "Ingrese la posicion que quiere eliminar: " << endl;
 										for(int i = 0; i < carro.size(); i++){
+											cout << "<---[" << i << "]--->" << endl;
 											cout << "Placa: " << carro[i] -> getPlaca() << endl;
 											cout << "Marca: " << carro[i] -> getMarca() << endl;
 											cout << "Modelo: " << carro[i] -> getModelo() << endl;
 											cout << "Año: " << carro[i] -> getAnio() << endl;
 											cout << "Precio Renta: " << carro[i] -> getPrecio() << endl;
+											cout << "<------------------->" << endl;
 										}
 										cin >> numbers;
 										carro.erase(carro.begin() + numbers);
@@ -139,14 +176,17 @@ int main(){
 						           		break;}
 
 						           	case 4:{
-						           		cout << "Lista de Carros" << endl
+						           		cout << "Lista de Carros" << endl;
 						           		for(int i = 0; i < carro.size(); i++){
+						           			cout << "<---[" << i << "]--->" << endl;
 											cout << "Placa: " << carro[i] -> getPlaca() << endl;
 											cout << "Marca: " << carro[i] -> getMarca() << endl;
 											cout << "Modelo: " << carro[i] -> getModelo() << endl;
 											cout << "Año: " << carro[i] -> getAnio() << endl;
 											cout << "Precio Renta: " << carro[i] -> getPrecio() << endl;
+											cout << "<------------------->" << endl;
 										}
+
 						           		break;}
 
 							       	case 5:
@@ -155,6 +195,32 @@ int main(){
 							    }
 							}
 	            		}
+	            	}
+	            }
+	            for (int i = 0; i < clien.size(); ++i)
+	            {
+	            	if (clien.at(i) -> getUser() == Nusuario && clien.at(i) -> getPassword() == contrasenia)
+	            	{
+	            		if (dynamic_cast<Cliente*>(clien.at(i)))
+	            		{						
+	            			bool salir4 = false;
+							while (!salir4){
+						        switch(menu4()){
+						           	case 1:{
+							                
+						               	break;}
+
+							       	case 2:{
+							                
+							           	break;}
+
+							       	case 3:
+							           	salir4 = true;
+							           	break;
+							    }
+							}
+	            		}
+
 	            	}
 	            }
 	           	break;}
@@ -238,6 +304,29 @@ int menu3(){
     return opcion;
 }
 
+int menu4(){
+    int opcion;
+    bool valido = true;
+    do{
+        cout << "-----SUB-MENU------" << endl
+             << "1.- Alquilar" << endl
+             << "2.- Imprimir Factura"<< endl
+             << "3.- Salir" << endl; 
+
+        cout << " Ingrese una opción: ";
+        cin >> opcion;
+
+        if (opcion > 0 && opcion < 4)
+            valido = true;
+        else {
+            cout << "La opcion seleccionada es Nula, intente de nuevo ......." << endl;
+        }
+        cout << "----------------------" << endl;
+                
+    }while(!valido);
+    return opcion;
+}
+
 string RandomPlaca(){
 	int random;
 	stringstream random2;
@@ -306,4 +395,57 @@ string RandomPlaca(){
 	}
 	random3 = random2.str();
 	return random3;
+}
+
+vector<Administrador*> CargarAdmin(vector<Administrador*> admins){
+	ifstream archivo("Administrador.txt");
+
+	while(!archivo.eof()){
+		string user, password, cargo;
+		int numSeguro;
+		//---------------------------->
+		archivo >> user;
+		archivo >> password;
+		archivo >> cargo;
+		archivo >> numSeguro;
+		//---------------------------->
+		Administrador* adds = new Administrador(cargo, numSeguro, user, password);
+		admins.push_back(adds);
+	}
+	return admins;
+}
+
+vector<Cliente*> CargarClien(vector<Cliente*> cliens){
+	ifstream archivo("Cliente.txt");
+
+	while(!archivo.eof()){
+		string user, password, membresia;
+		//---------------------------->
+		archivo >> user;
+		archivo >> password;
+		archivo >> membresia;
+		//---------------------------->
+		Cliente* adds = new Cliente(membresia, user, password);
+		cliens.push_back(adds);
+	}
+	return cliens;
+}
+
+vector<Vehiculo*> CargarCarr(vector<Vehiculo*> carr){
+	ifstream archivo("Vehiculo.txt");
+
+	while(!archivo.eof()){
+		string placa, marca, modelo, anio;
+		double precio;
+		//---------------------------->
+		archivo >> placa;
+		archivo >> marca;
+		archivo >> modelo;
+		archivo >> anio;
+		archivo >> precio;
+		//---------------------------->
+		Vehiculo* adds = new Vehiculo(placa, marca, modelo, anio, precio);
+		carr.push_back(adds);
+	}
+	return carr;
 }
