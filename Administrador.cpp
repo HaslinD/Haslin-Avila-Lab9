@@ -15,15 +15,15 @@ string Administrador :: getCargo(){
 	return cargo;
 }
 
-void Administrador :: setCargo(){
+void Administrador :: setCargo(string cargo){
 	this -> cargo = cargo;
 }
 
-string Administrador :: getSeguro(){
+int Administrador :: getSeguro(){
 	return numSeguro;
 }
 
-void Administrador :: setSeguro(){
+void Administrador :: setSeguro(int numSeguro){
 	this -> numSeguro = numSeguro;
 }
 

@@ -14,7 +14,7 @@ string Usuario :: getUser(){
 	return user;
 }
 
-void Usuario :: setUser(){
+void Usuario :: setUser(string user){
 	this -> user = user;
 }
 
@@ -22,7 +22,7 @@ string Usuario :: getPassword(){
 	return password;
 }
 
-void Usuario :: setPassword(){
+void Usuario :: setPassword(string password){
 	this -> password = password;
 }
 

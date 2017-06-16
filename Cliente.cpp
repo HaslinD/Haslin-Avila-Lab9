@@ -14,7 +14,7 @@ string Cliente :: getMembresia(){
 	return tipoMembre;
 }
 
-void Cliente :: setMembresia(){
+void Cliente :: setMembresia(string tipoMembre){
 	this -> tipoMembre = tipoMembre;
 }
 
