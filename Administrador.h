@@ -12,6 +12,7 @@ class Administrador : public Usuario {
 		int numSeguro;
 
 	public:
+		Administrador();
 		Administrador(string, int, string, string);
 
 		string getCargo();
@@ -19,5 +20,7 @@ class Administrador : public Usuario {
 
 		int getSeguro();
 		void setSeguro(int);
+
+		~Administrador();
 };
 #endif

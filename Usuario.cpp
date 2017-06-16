@@ -2,6 +2,9 @@
 
 using namespace std;
 
+Usuario :: Usuario() {
+}
+
 Usuario :: Usuario (string user, string password) {
 	this -> user = user;
 	this -> password = password;
@@ -21,4 +24,7 @@ string Usuario :: getPassword(){
 
 void Usuario :: setPassword(){
 	this -> password = password;
+}
+
+Usuario :: ~Usuario() {
 }

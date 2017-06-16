@@ -2,6 +2,10 @@
 
 using namespace std;
 
+Cliente :: Cliente() {
+
+}
+
 Cliente :: Cliente (string tipoMembre, string user, string password) : Usuario(user, password){
 	this -> tipoMembre = tipoMembre;
 }
@@ -12,4 +16,7 @@ string Cliente :: getMembresia(){
 
 void Cliente :: setMembresia(){
 	this -> tipoMembre = tipoMembre;
+}
+
+Cliente :: ~Cliente() {
 }

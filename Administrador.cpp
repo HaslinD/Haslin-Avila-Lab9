@@ -2,6 +2,10 @@
 
 using namespace std;
 
+Administrador :: Administrador() {
+	
+}
+
 Administrador :: Administrador (string cargo, int numSeguro, string user, string password) : Usuario(user, password){
 	this -> cargo = cargo;
 	this -> numSeguro = numSeguro;
@@ -21,4 +25,7 @@ string Administrador :: getSeguro(){
 
 void Administrador :: setSeguro(){
 	this -> numSeguro = numSeguro;
+}
+
+Administrador :: ~Administrador(){
 }

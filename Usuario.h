@@ -11,6 +11,7 @@ class Usuario {
 		string password;
 
 	public:
+		Usuario();
 		Usuario(string, string);
 
 		string getUser();
@@ -18,5 +19,7 @@ class Usuario {
 
 		string getPassword();
 		void setPassword(string);
+
+		virtual ~Usuario();
 };
 #endif
