@@ -227,7 +227,7 @@ int main(){
 											}
 											cin >> nums;
 											carro.at(nums) -> setAlquilado(true);
-											textFac << carro.at(nums) -> getPlaca() << endl << carro.at(nums) -> getMarca();
+											textFac << carro.at(nums) -> getPlaca() << endl << carro.at(nums) -> getMarca() << endl;
 
 							               	break;}
 
