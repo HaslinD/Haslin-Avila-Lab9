@@ -25,12 +25,12 @@ int main(){
 	vector<Vehiculo*> carro;
 	vector<Administrador*> admin;
 	vector<Cliente*> clien;
-	ofstream textAdm, textCli, textCar;
+	ofstream textAdm, textCli, textCar, textFac;
 	srand(time(NULL));
 	textAdm.open("Administrador.txt", ios::app);
 	textCli.open("Cliente.txt", ios::app);
 	textCar.open("Vehiculo.txt", ios::app);
-	
+
 	admin = CargarAdmin(admin);
 	clien = CargarClien(clien);
 	carro = CargarCarr(carro);
@@ -132,7 +132,7 @@ int main(){
 					               	break;}
 
 						       	case 2:{
-						       		int num;
+						       		int num = 0;
 						       		string placa1, marca1, modelo1, anio1; 
 						       		double precio1;
 						            cout << "Modificar Vehiculo" << endl;
@@ -184,6 +184,7 @@ int main(){
 					           		break;}
 
 					           	case 4:{
+					           		int nums = 0;
 					           		cout << "Lista de Carros" << endl;
 					           		for(int i = 0; i < carro.size(); i++){
 					           			cout << "<---[" << i << "]--->" << endl;
@@ -212,12 +213,23 @@ int main(){
 								while (!salir4){
 							        switch(menu4()){
 							           	case 1:{
-											
-							               	break;}
+											textFac.open("Factura.txt", ios::app);
+											int nums = 0;
+											cout << "Desea alquilar un Carro" << endl;
+											for(int i = 0; i < carro.size(); i++){
+							           			cout << "<---[" << i << "]--->" << endl;
+												cout << "Placa: " << carro[i] -> getPlaca() << endl;
+												cout << "Marca: " << carro[i] -> getMarca() << endl;
+												cout << "Modelo: " << carro[i] -> getModelo() << endl;
+												cout << "Año: " << carro[i] -> getAnio() << endl;
+												cout << "Precio Renta: " << carro[i] -> getPrecio() << endl;
+												cout << "<------------------->" << endl;
+											}
+											cin >> nums;
+											carro.at(nums) -> setAlquilado(true);
+											textFac << carro.at(nums) -> getPlaca() << endl << carro.at(nums) -> getMarca();
 
-								       	case 2:{
-								                
-								           	break;}
+							               	break;}
 
 								       	case 3:
 								           	salir4 = true;
@@ -315,13 +327,12 @@ int menu4(){
     do{
         cout << "-----SUB-MENU------" << endl
              << "1.- Alquilar" << endl
-             << "2.- Imprimir Factura"<< endl
-             << "3.- Salir" << endl; 
+             << "2.- Salir" << endl; 
 
         cout << " Ingrese una opción: ";
         cin >> opcion;
 
-        if (opcion > 0 && opcion < 4)
+        if (opcion > 0 && opcion < 3)
             valido = true;
         else {
             cout << "La opcion seleccionada es Nula, intente de nuevo ......." << endl;
