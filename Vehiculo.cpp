@@ -14,6 +14,8 @@ Vehiculo :: Vehiculo(string placa, string marca, string modelo, string anio, dou
 	this -> modelo = modelo;
 	this -> anio = anio;
 	this -> precio = precio;
+	alquilado = false;
+
 }
 
 string Vehiculo :: getPlaca(){
@@ -54,6 +56,14 @@ double Vehiculo :: getPrecio(){
 
 void Vehiculo :: setPrecio(double precio){
 	this -> precio = precio;
+}
+
+bool Vehiculo :: getAlquilado(){
+	return alquilado;
+}
+
+void Vehiculo :: setAlquilado(bool alquilado){
+	this -> alquilado = alquilado;
 }
 
 /*int* Vehiculo :: aleatPlaca1(){

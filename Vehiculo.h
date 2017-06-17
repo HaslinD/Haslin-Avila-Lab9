@@ -14,6 +14,8 @@ class Vehiculo {
 		string anio;
 		double precio;
 
+		bool alquilado;
+
 	public:
 		Vehiculo();
 		Vehiculo(string, string, string, string, double);
@@ -32,5 +34,8 @@ class Vehiculo {
 
 		double getPrecio();
 		void setPrecio(double);
+
+		bool getAlquilado();
+		void setAlquilado(bool);
 };
 #endif
