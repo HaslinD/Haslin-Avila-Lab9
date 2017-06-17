@@ -31,9 +31,9 @@ int main(){
 	textCli.open("Cliente.txt", ios::app);
 	textCar.open("Vehiculo.txt", ios::app);
 
-	admin = CargarAdmin(admin);
-	clien = CargarClien(clien);
-	carro = CargarCarr(carro);
+	//admin = CargarAdmin(admin);
+	//clien = CargarClien(clien);
+	//carro = CargarCarr(carro);
 
 	//--------------------------------------------------------------------------
 	//--------------------------------------------------------------------------
