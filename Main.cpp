@@ -231,7 +231,7 @@ int main(){
 
 							               	break;}
 
-								       	case 3:
+								       	case 2:
 								           	salir4 = true;
 								           	break;
 								    }
